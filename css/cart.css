@@ -1,0 +1,12 @@
+
+.jia,.jian,.geshu,.jiage{font-size: 30px;}
+.geshu{text-indent:50px;width: 200px;}
+.jiage{color: red;}
+.jia{float: right;background: sandybrown;width: 30px;height: 30px;}
+.jian{float: left;background: sandybrown;width: 30px;height: 30px;}
+.delete{float: left;font-size: 30px;background: skyblue;}
+.clear{clear: both;}
+
+.cart-item{border-bottom: 3px solid black;padding: 10px;}
+
+
