@@ -158,10 +158,14 @@ class ListPage extends Component {
                 	<ReactIScroll 
                 	ref="iScroll"
                 	iScroll={IScroll}
+                	{/*配置iscroll基本属性*/}
                 	options={ScrollOptions}
+                	{/*滚动时执行函数*/}
                 	onScroll={(myScroll)=>this.onScroll(myScroll)}
+                	{/*滚动完成执行函数*/}
                 	onScrollEnd={(myScroll)=>this.onScrollEnd(myScroll)}
                 	>
+                		{/*这里渲染商品内容 上面的ProductList组件*/}
                 		<ProductList productData={this.state.productData} />
                 	</ReactIScroll>
                     
