@@ -22,7 +22,7 @@ class IndexPage extends Component　{
             	<a href="#/list/">进入列表</a>
             </Content>
                 
-                <Footer />
+                <Footer  />
             </div>
         )
     }

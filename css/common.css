@@ -146,7 +146,9 @@ html, body {
     line-height: 48px;
     background-color: #484850; }
 .footer .footer-list {
+	position: relative;
     height: 100%; }
+.shuliang{position: absolute;width: 30px;height: 30px;border-radius: 30px;background: red;color: white;line-height: 30px;text-align: center;top: 0;left: 55%;z-index: 9999999;}
 .footer .footer-list li {
     float: left;
     width: 20%;

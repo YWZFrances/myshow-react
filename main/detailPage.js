@@ -1,6 +1,7 @@
 import {Header,Footer,Content,SubHeader} from  "../components/common"
 import React, {Component} from  "react"
 import {Tools} from  "../tools/tools"
+import  "../css/swiper-3.3.1.min.css"
 
 //详情内容
 class DetailPage extends Component {
@@ -18,7 +19,7 @@ class DetailPage extends Component {
 			console.log(data)
 			console.log(data[0].goodsName)
 			this.setState({
-				bannerList:[],
+				bannerList:JSON.parse(data[0].imgsUrl),
 				goodsName:data[0].goodsName,
 				price:data[0].price,
 				number:data[0].number,
@@ -50,6 +51,16 @@ class DetailPage extends Component {
 			<Content>
 				<ul>
 					<li>
+						<div className="swiper-container" ref="swiper-container" style={{width:"180vw",marginLeft:"-40vw",position:"relative"}}>
+                            <div className="swiper-wrapper">
+                                {
+                                    this.state.bannerList.map((ele,i)=><div key={i} className="swiper-slide">
+                                        <img src={ele} />
+                                    </div>)
+                                }
+                            </div>
+                        </div>
+                    <div ref="pagination" className="swiper-self-pagination"></div>
 						<p>{this.state.goodsName}</p>
 						<p>{this.state.price}</p>
 						<p>{this.state.number}</p>

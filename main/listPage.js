@@ -1,4 +1,5 @@
 import {Header,Footer,Content,SubHeader} from  "../components/common"
+//此处用到ProductList组件 在product-list.js暴露出来的
 import ProductList from "../components/product-list"
 import React, {Component} from  "react"
 import {ScrollOptions} from '../config/config'
@@ -44,6 +45,7 @@ class ListPage extends Component {
 //这个对象可以通过 this.state 属性读取。
 //当用户点击组件，导致状态变化，this.setState 方法就修改状态值，
 //每次修改以后，自动调用 this.render 方法，再次渲染组件。
+//productData是列表的东西(循环出商品)=>在product-list JS里
         this.state= {
             classData:[],
             productData:[],
@@ -164,7 +166,7 @@ class ListPage extends Component {
                 	</ReactIScroll>
                     
                 </Content>
-                <Footer active={1} />
+                <Footer  active={1} />
             </div>
         )
     }

@@ -98,10 +98,13 @@ class CartPage extends Component {
             totalPrice:price
         });
     }
+    
+    
+    
     toConfirm(){
         window.localStorage.setItem("cartData",JSON.stringify({
-            totalPrice:1,
-            totalNumber:1,
+            totalPrice:this.state.totalPrice,
+            totalNumber:this.state.totalNumber,
             productInfo:this.state.cartData
         }));
         window.location.hash="#/confirm"
@@ -127,7 +130,7 @@ class CartPage extends Component {
                 <Content hasFooter={true} hasSubHeader={true}>
                     <CartList changeData={this.changeData} cartData={this.state.cartData}/>
                 </Content>
-                <Footer active="2"/>
+                <Footer shuliang={this.state.totalNumber} active="2"/>
             </div>
         )
     }

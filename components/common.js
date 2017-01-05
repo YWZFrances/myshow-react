@@ -44,6 +44,7 @@ class Footer extends Component {
                     </li>)
                 }
             </ul>
+            <div className="shuliang">{this.props.shuliang}</div>
         </div>
     }
 }
