@@ -36,6 +36,7 @@ ClassList.defaultProps={
     classData:[]
 };
 
+//列表页面
 /*商品页面的顶层组件*/
 class ListPage extends Component {
     constructor(props){
@@ -152,17 +153,20 @@ class ListPage extends Component {
                 <Header title="列表" hasSearch={true}  />
                 <SubHeader>
                 {/*改变分类，id为classID*/}
+                {/*配置iscroll基本属性*/}
+                {/*滚动时执行函数*/}
+                {/*滚动完成执行函数*/}
                     <ClassList changeClassID={(id)=>this.changeClassID(id)} classData={this.state.classData} />
                 </SubHeader>
                 <Content hasFooter={true} hasSubHeader={true} >
                 	<ReactIScroll 
                 	ref="iScroll"
                 	iScroll={IScroll}
-                	{/*配置iscroll基本属性*/}
+                	
                 	options={ScrollOptions}
-                	{/*滚动时执行函数*/}
+
                 	onScroll={(myScroll)=>this.onScroll(myScroll)}
-                	{/*滚动完成执行函数*/}
+
                 	onScrollEnd={(myScroll)=>this.onScrollEnd(myScroll)}
                 	>
                 		{/*这里渲染商品内容 上面的ProductList组件*/}

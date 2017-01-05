@@ -2,6 +2,7 @@ import {Header,Footer,Content,SubHeader} from  "../components/common"
 import React, {Component} from  "react"
 import {Tools} from  "../tools/tools"
 import  "../css/swiper-3.3.1.min.css"
+import  "../components/swiper.js"
 
 //详情内容
 class DetailPage extends Component {
@@ -22,7 +23,7 @@ class DetailPage extends Component {
 				bannerList:JSON.parse(data[0].imgsUrl),
 				goodsName:data[0].goodsName,
 				price:data[0].price,
-				number:data[0].number,
+				buynumber:data[0].buynumber,
 				goodsID:data[0].goodsID
 			})
 		})
@@ -47,11 +48,10 @@ class DetailPage extends Component {
 	render(){
 		return (
 			<div>
-			<Header title={"购物车"} />
-			<Content>
-				<ul>
-					<li>
-						<div className="swiper-container" ref="swiper-container" style={{width:"180vw",marginLeft:"-40vw",position:"relative"}}>
+			<Header title="商品详情" rightBtn={<a href="javascript:;" onClick={this.toCart}>购物车</a>} />
+                <Content>
+
+                        <div className="swiper-container" ref="swiper-container" style={{width:"180vw",marginLeft:"-40vw",position:"relative"}}>
                             <div className="swiper-wrapper">
                                 {
                                     this.state.bannerList.map((ele,i)=><div key={i} className="swiper-slide">
@@ -61,14 +61,13 @@ class DetailPage extends Component {
                             </div>
                         </div>
                     <div ref="pagination" className="swiper-self-pagination"></div>
-						<p>{this.state.goodsName}</p>
-						<p>{this.state.price}</p>
-						<p>{this.state.number}</p>
-					</li>
-				</ul>
-				<button onClick={()=>this.addCart()}>加入购物车</button>
-				<button onClick={()=>this.toCart()}>去购物车</button>
-			</Content>
+                    <div className="text-info">
+                        <div className="p-name">{this.state.goodsName}</div>
+                        <div className="p-price">￥{this.state.price}</div>
+                        <div className="p-number">购买人数：{this.state.buynumber}</div>
+                    </div>
+                    <div><button onClick={()=>this.addCart()} className="add-cart">添加到购物车</button></div>
+                </Content>
 				
 			<Footer />
 			</div>
