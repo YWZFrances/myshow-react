@@ -67,7 +67,7 @@ class CartPage extends Component {
             this.setState({
                 cartData:data
             });
-            //getTotal函数调用，下面用到
+            //getTotal函数调用查看所有的物品的数量总和，和总价格，下面用到
             this.getTotal(data)
         });
 		
@@ -98,49 +98,53 @@ class CartPage extends Component {
             //从数据里删除此数据
             data.splice(index,1)
         }
+        //改变数值之后，重新设置cartData的值=新的data
         this.setState({
             cartData:data
         });
+        //getTotal函数调用查看所有的物品的数量总和，和总价格，下面用到
         this.getTotal(data)
+        //接口需要 传入userID goodsID number 定义对象，整个传入
         var sendData = {"userID":userID,"goodsID":id,"number":number}
-        //数据请求
+        //数据请求 保存修改完之后的数据(更新购物车接口)
         $.get("http://datainfo.duapp.com/shopdata/updatecar.php",sendData,function (data) {
                 console.log(data)
             },"json")
     }
+    
+    //计算总数量总价
     getTotal(data){
         var number = 0;
         var price = 0;
         for(var i=0;i<data.length;i++){
+        	//循环 把所有的商品的number值都加起来，注意隐式转换
             number+=data[i].number*1;
+            //循环 把每个商品的number和price相乘，然后相加
             price+=data[i].number*data[i].price
         }
 
         this.setState({
+        	//设置总价总数量
             totalNumber:number,
             totalPrice:price
         });
     }
     
     
-    
+    //去订单页函数 下面调用
     toConfirm(){
+    	//把cartData数据传入localstorage，注意转换成字符串
         window.localStorage.setItem("cartData",JSON.stringify({
+        	//总数 总价 购物车信息(显示在订单页)
             totalPrice:this.state.totalPrice,
             totalNumber:this.state.totalNumber,
             productInfo:this.state.cartData
         }));
+        //哈希值单页面跳转到订单页
         window.location.hash="#/confirm"
     }
+    //渲染购物车页面
     render() {
-      /*  var number = 0;
-        var price = 0;
-        var data  = this.state.cartData;
-        for(var i=0;i<data.length;i++){
-            number+=data[i].number*1;
-            price+=data[i].number*data[i].price
-        }*/
-
         return (
             <div className="page" id="cart-page">
                 <Header title="购物车" rightBtn={<a href="javascript:;" onClick={()=>this.toConfirm()}>结算</a>} />
