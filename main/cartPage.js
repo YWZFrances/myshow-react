@@ -8,10 +8,19 @@ import React,{Component} from  "react"
 import  "../css/common.css"
 import  "../css/cart.css"
 
+//购物车内容区
 class CartList extends Component {
+	//当你在react class中需要设置state的初始值或者是绑定事件时，用constructor
     constructor(props){
         super(props)
     }
+    //渲染购物车内容区
+    //循环cartData的图 名字 价格 数量(默认为1)
+    //加减数量
+    //删除按钮
+//  changeData函数表示购物车的变化 加 减 删除
+
+//35行是加减 调用changeData函数，传入1或者是-1和下标(i) 1和-1都是true 0是false，表示删除
     render () {
         return (
             <ul className="cart-list">
@@ -36,43 +45,57 @@ class CartList extends Component {
     }
 }
 
+//购物车页面
 class CartPage extends Component {
+	//当在react的class中需要设置state初始值或者是绑定事件的时候，可以用constructor
     constructor(props){
         super(props);
-
+		//设置默认值
+		// 购物车的数据 总价 总个数
         this.state={
             cartData:[],
             totalNumber:0,
             totalPrice:0
         };
-
+		//获取localStorage中的数据 判断有没有登录
+		//只有登录了才能获取购物车的数据
+		//网址？userID=注册的哪个ID
         var id = Tools.getUserID();
         id && $.getJSON("http://datainfo.duapp.com/shopdata/getCar.php?callback=?",{userID:id},(data)=>{
             console.log(data);
+            //获取到了数值，就让cartData=data
             this.setState({
                 cartData:data
             });
+            //getTotal函数调用，下面用到
             this.getTotal(data)
         });
-
+		
         this.changeData = this.changeData.bind(this)
     }
-
+	
+	//购物车加减删除，两个参数，第一个是操作，第二个是下标(哪一个进行此操作)
+	//上面点击事件调用此函数
     changeData(type,index){
         console.log(this)
         console.log(type);
         console.log(index)
         var userID = Tools.getUserID();
         var data = this.state.cartData;
+        //data数据的第几个商品的goodsID
         var id = data[index].goodsID;
+        //data数据的第几个商品的number
         var number = data[index].number;
         if(type){
             //加减
+            //页面上的number值改变
             number=type+number*1;
+            //然后数据里的number也要跟着改变
             data[index].number = number
         }else {
             //删除
             number=0;
+            //从数据里删除此数据
             data.splice(index,1)
         }
         this.setState({
