@@ -18,6 +18,7 @@ class OrderProductInfo extends Component {
 //      productInfo是从localStorage里面拿出来的购物车的数据
         var data = this.props.productInfo||[];
         //循环遍历
+        //页面上有的数据
         console.log(data);
         return (
             <ul className="order-product-info">
