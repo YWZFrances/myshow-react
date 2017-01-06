@@ -27,7 +27,7 @@ class Header extends Component {
 }
 
 Header.defaultProps={
-    hasBack:true
+    hasBack:false
 };
 
 

@@ -5,6 +5,7 @@ import {Header,Content} from  "../components/common"
 import React,{Component} from  "react"
 import  "../css/confirm.css"
 
+//订单内容部分
 class OrderProductInfo extends Component {
     constructor(props){
         super(props)
@@ -32,6 +33,7 @@ class OrderProductInfo extends Component {
     }
 }
 
+//订单页面
 class ConfirmFooter extends Component {
     constructor(props){
         super(props)
@@ -90,12 +92,17 @@ class ConfirmPage extends Component {
             yunFei:30
         };
     }
+    
+    toMyorder(){
+    	window.location.hash="#/myorder"
+    }
+    
     render() {
         var data = this.state.orderData;
         var allPrice = this.state.yunFei+data.totalPrice;
         return (
             <div className="page" id="confirm-page">
-                <Header title="确认订单" />
+                <Header title="确认订单" rightBtn={<a href="javascript:;" onClick={()=>this.toMyorder()}>我的</a>} />
                 <Content hasFooter={true}>
                     <div className="ads-info">
                     	<p>收货人:成敏    电话 <span>13111112222</span></p>

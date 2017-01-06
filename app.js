@@ -10,6 +10,7 @@ import DetailPage from "./main/detailPage"
 import CartPage from "./main/cartPage"
 import Login from "./main/login"
 import ConfirmPage from "./main/confirmPage"
+import MyorderPage from "./main/myorderPage"
 
 
 
@@ -21,6 +22,7 @@ ReactDOM.render(<Router history={hashHistory}>
     <Route path="cart" component={CartPage}  />
     <Route path="login" component={Login}  />
     <Route path="confirm" component={ConfirmPage}  />
+    <Route path="myorder" component={MyorderPage}  />
 
 </Router>,document.getElementById("main"));
 
