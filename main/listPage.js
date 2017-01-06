@@ -7,7 +7,7 @@ import ReactDOM from "react-dom"
 import ReactIScroll from 'react-iscroll'
 import "../css/common.css"
 
-/*商品分类列表*/
+//商品分类列表---------------------------------------------------------------------
 class ClassList extends Component {
 	//当你在React class中需要设置state的初始值或者绑定事件时
 	//用constructor
@@ -36,7 +36,7 @@ ClassList.defaultProps={
     classData:[]
 };
 
-//列表页面
+//列表页面----------------------------------------------------------------------------
 /*商品页面的顶层组件*/
 class ListPage extends Component {
     constructor(props){
@@ -138,6 +138,8 @@ class ListPage extends Component {
 	//onScroll事件 元素滚动时执行这个函数    
     onScroll(myScroll){
     	console.log("scroll");
+    	console.log(myScroll.y);
+    	console.log(myScroll.maxScrollY);
     	//下拉超过60，打印刷新
     	if(myScroll.y>60){
     		console.log("刷新")

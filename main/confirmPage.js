@@ -5,14 +5,19 @@ import {Header,Content} from  "../components/common"
 import React,{Component} from  "react"
 import  "../css/confirm.css"
 
-//订单内容部分
+//订单内容部分---------------------------------------------------------------------
 class OrderProductInfo extends Component {
+	//在react class里需要设置state的初始值或者是绑定事件时，用constructor
     constructor(props){
         super(props)
     }
+    //渲染订单内容
     render(){
         //this.props.productInfo
+        //购物车页面的点击进入订单页productInfo:this.state.cartData=>这个存入了localStorage
+//      productInfo是从localStorage里面拿出来的购物车的数据
         var data = this.props.productInfo||[];
+        //循环遍历
         console.log(data);
         return (
             <ul className="order-product-info">
@@ -33,11 +38,12 @@ class OrderProductInfo extends Component {
     }
 }
 
-//订单页面
+//订单页面的footer部分-------------------------------------------------------------
 class ConfirmFooter extends Component {
     constructor(props){
         super(props)
     }
+    //点击提交按钮调用的函数
     orderSubmit(){
         console.log("提交订单,生成真实订单");
         console.log(this.props.orderData);
@@ -47,14 +53,17 @@ class ConfirmFooter extends Component {
 
         //订单的数据模型
         var orderItem = {
+        	//订单号  订单类型(未发货，已付款，正在派送。。。。。) 总个数 总数量 总
             orderID: new Date().getTime(),
             orderState:1,
             totalNumber:this.props.totalNum,
             totalPrice:this.props.totalPrice,
+            //orderData就是获取的购物车的localStorage  cartData
+            //orderProductInfo 每条订单的商品信息
             orderProductInfo:this.props.orderData.productInfo
         };
-
-    //window.localStorage.getItem("orderData") ==null
+		console.log(orderArray)
+		//window.localStorage.getItem("orderData") ==null
 
         // 之前没有订单的话，让订单的数组等于一个空数组
        var orderArray  = JSON.parse(window.localStorage.getItem("orderData")||"[]") ;
@@ -79,6 +88,7 @@ class ConfirmFooter extends Component {
     }
 }
 
+//订单页面-----------------------------------------------------------------------------------
 class ConfirmPage extends Component {
     constructor(props){
         super(props);

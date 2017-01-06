@@ -29,7 +29,6 @@ ReactDOM.render(<Router history={hashHistory}>
 
 
 
-
 if (module.hot) {
     module.hot.accept();
 }

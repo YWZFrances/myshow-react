@@ -4,7 +4,7 @@ import {Tools} from  "../tools/tools"
 import  "../css/swiper-3.3.1.min.css"
 import  "../components/swiper.js"
 
-//详情内容
+//详情页面-------------------------------------------------------------------------------
 class DetailPage extends Component {
 	constructor(props){
 		super(props);

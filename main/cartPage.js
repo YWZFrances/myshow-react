@@ -8,7 +8,7 @@ import React,{Component} from  "react"
 import  "../css/common.css"
 import  "../css/cart.css"
 
-//购物车内容区
+//购物车内容区-------------------------------------------------------------------------------
 class CartList extends Component {
 	//当你在react class中需要设置state的初始值或者是绑定事件时，用constructor
     constructor(props){
@@ -36,7 +36,7 @@ class CartList extends Component {
                                 <span className="jia" onClick={()=>this.props.changeData(1,i)} >+</span>
                             </div>
                         </div>
-                        <a className="delete" onClick={()=>this.props.changeData(0,i)}  href="javascript:void (0);" >删除</a>
+                        <a className="delete" onClick={()=>this.props.changeData(0,i)}  href="javascript:;" >删除</a>
                         <div className="clear"></div>
                     </li>)
                 }
@@ -45,7 +45,7 @@ class CartList extends Component {
     }
 }
 
-//购物车页面
+//购物车页面--------------------------------------------------------------------------------
 class CartPage extends Component {
 	//当在react的class中需要设置state初始值或者是绑定事件的时候，可以用constructor
     constructor(props){
@@ -90,6 +90,10 @@ class CartPage extends Component {
             //加减
             //页面上的number值改变
             number=type+number*1;
+            //不能小于1
+            if(number<1){
+            	number = 1
+            }
             //然后数据里的number也要跟着改变
             data[index].number = number
         }else {
