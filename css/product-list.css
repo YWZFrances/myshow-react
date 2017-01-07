@@ -1,0 +1,5 @@
+*{margin:0;padding:0}
+
+.list-wrap{width: 100%;}
+.list-wrap .list{float: left;width: 50%;height: 140px;}
+.list-wrap .list .name{width: 80%;height: 20px;}

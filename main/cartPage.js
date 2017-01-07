@@ -60,8 +60,9 @@ class CartPage extends Component {
 		//获取localStorage中的数据 判断有没有登录
 		//只有登录了才能获取购物车的数据
 		//网址？userID=注册的哪个ID
-        var id = Tools.getUserID();
-        id && $.getJSON("http://datainfo.duapp.com/shopdata/getCar.php?callback=?",{userID:id},(data)=>{
+        var id = JSON.parse(Tools.getUserID());
+        console.log(id.username)
+        id && $.getJSON("http://datainfo.duapp.com/shopdata/getCar.php?callback=?",{userID:id.username},(data)=>{
             console.log(data);
             //获取到了数值，就让cartData=data
             this.setState({
@@ -109,7 +110,7 @@ class CartPage extends Component {
         //getTotal函数调用查看所有的物品的数量总和，和总价格，下面用到
         this.getTotal(data)
         //接口需要 传入userID goodsID number 定义对象，整个传入
-        var sendData = {"userID":userID,"goodsID":id,"number":number}
+        var sendData = {"userID":id.username,"goodsID":id,"number":number}
         //数据请求 保存修改完之后的数据(更新购物车接口)
         $.get("http://datainfo.duapp.com/shopdata/updatecar.php",sendData,function (data) {
                 console.log(data)

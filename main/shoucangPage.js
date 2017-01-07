@@ -5,7 +5,7 @@ import React, {Component} from  "react"
 
 
 
-class IndexPage extends Component　{
+class ShoucangPage extends Component　{
     constructor(props){
         super(props)
     }
@@ -16,15 +16,14 @@ class IndexPage extends Component　{
     render (){
         return (
             <div>
-            <Header title={"首页"} />
+            <Header title={"收藏"} />
             <Content>
-            	<h1>首页</h1>
-            	<a href="#/list/">进入列表</a>
+            	<h1>你这店没啥好东西,我一个也不收藏~</h1>
             </Content>
                 
-                <Footer hasFooter={true} active={0} />
+                <Footer hasFooter={true}  />
             </div>
         )
     }
 }
-export  default  IndexPage
+export  default  ShoucangPage

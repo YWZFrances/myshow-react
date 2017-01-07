@@ -9,6 +9,12 @@ let Tools = {
 			window.location.hash = "#/login"
 		}
 		return id
+	},
+//	setUserID:function(key,value){
+//		localStorage.setItem(key,value)
+//	},
+	setUserID:function(key,value){
+		localStorage.setItem(key,value)
 	}
 }
 

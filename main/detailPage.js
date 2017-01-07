@@ -30,9 +30,9 @@ class DetailPage extends Component {
 	}
 	addCart(){
 		//判断用户是否登录
-		var userID = Tools.getUserID();
-		userID && $.get("http://datainfo.duapp.com/shopdata/updatecar.php",
-		{userID:userID,goodsID:this.state.goodsID,number:1},function(data){
+		var id = JSON.parse(Tools.getUserID());
+		id && $.get("http://datainfo.duapp.com/shopdata/updatecar.php",
+		{"userID":id.username,"goodsID":this.state.goodsID,"number":1},function(data){
 			console.log(data);
 			if(data == 1){
 				alert("添加成功")

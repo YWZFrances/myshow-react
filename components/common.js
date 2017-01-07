@@ -37,22 +37,30 @@ Header.defaultProps={
 };
 
 
-class Footer extends Component {
-    constructor(props) {
-        super(props)
-    }
-    render () {
-        return <div className="footer">
-            <ul className="footer-list">
-                {
-                    this.props.footerData.map((ele,i)=><li key={i}>
-                        <a className={i==this.props.active?"active":""}>{ele}</a>
-                    </li>)
-                }
-            </ul>
-        </div>
-    }
-}
+class Footer extends Component{
+	constructor(props){
+		super(props)
+	}
+	handleClick(i,index){
+		console.log(1222)
+		var path = index==0?"/":index==1?"list":index==2?"cart":index==3?"show":"more"
+		window.location.hash="#/"+path
+	}
+	render(){
+		return(
+			<div className="footer" >
+			
+				<ul className="footer-list ">
+					{
+						this.props.footerData.map((ele,index)=><li key={index} onClick={()=>this.handleClick(this,index)}>
+							<a className={index==this.props.active?"active":""}>{ele}</a>
+						</li>)
+					}
+				</ul>
+			</div>
+		)
+	}
+};
 Footer.defaultProps={
     footerData:["首页","列表","购物车","我的","更多"]
 };
