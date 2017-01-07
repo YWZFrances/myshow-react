@@ -9,12 +9,18 @@ class Header extends Component {
     constructor(props) {
         super(props)
     }
+    
+    shangyige(){
+    	
+		window.history.go(-1)
+    }
+    
     render () {
 
         return <div className="header">
             <ul className="header-list">
                 <li className="header-btn">
-                    {this.props.hasBack?<a href={()=>window.history.go(-1)}>{"<"}</a>:""}
+                    {this.props.hasBack?<span onClick={()=>this.shangyige()}>{"<"}</span>:""}
 
                 </li>
                 <li className="header-tit">{this.props.title}</li>
@@ -27,7 +33,7 @@ class Header extends Component {
 }
 
 Header.defaultProps={
-    hasBack:false
+    hasBack:true
 };
 
 
@@ -44,7 +50,6 @@ class Footer extends Component {
                     </li>)
                 }
             </ul>
-            <div className="shuliang">{this.props.shuliang}</div>
         </div>
     }
 }

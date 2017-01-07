@@ -56,7 +56,7 @@ class ConfirmFooter extends Component {
         var orderItem = {
         	//订单号  订单类型(未发货，已付款，正在派送。。。。。) 总个数 总数量 总
             orderID: new Date().getTime(),
-            orderState:1,
+            orderState:Math.ceil(Math.random()*4),
             totalNumber:this.props.totalNum,
             totalPrice:this.props.totalPrice,
             //orderData就是获取的购物车的localStorage  cartData
